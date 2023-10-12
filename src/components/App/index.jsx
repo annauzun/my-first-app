@@ -1,6 +1,7 @@
 import Header from "components/Header";
 import Student from "components/Student";
 import Footer from "components/Footer";
+import StudentForm from "components/StudentForm";
 import { useState } from "react";
 
 function App() {
@@ -40,9 +41,16 @@ function App() {
     setStudents(filteredStudents)
   } 
   
+  const addStudent = (student) => {
+    const newStudents = [...students, student]
+    setStudents(newStudents)
+    /* setStudents = [...students, student]*/  
+  }
+
   return (
     <div>
       <Header />
+      <StudentForm addStudent={addStudent} />
       <div className="max-w-screen-lg mx-auto min-h-screen">
         {students.length === 0 && (
         <div className="mt-20 text-center text-7xl text-gray-400 font-thin">Нет студентов</div>
